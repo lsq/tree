@@ -47,7 +47,7 @@ OBJS += $(GNULIB_OBJS)
 # Uncomment options below for your particular OS:
 
 # Linux defaults:
-CFLAGS=-ggdb -pedantic -Wall -DLINUX -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64
+CFLAGS=-ggdb -std=c11 -pedantic-errors -pedantic -Wall -DLINUX -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64
 OBJS+=strverscmp.o
 #CFLAGS=-O4 -Wall  -DLINUX -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64
 #LDFLAGS=-s
