@@ -200,6 +200,6 @@ void saveino(ino_t, dev_t);
 struct _info **file_getfulltree(char *d, u_long lev, dev_t dev, off_t *size, char **err);
 
 /* We use the strverscmp.c file if we're not linux */
-#if ! defined (LINUX)
+#if ! defined (__linux__)
 int strverscmp (const char *s1, const char *s2);
 #endif
