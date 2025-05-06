@@ -18,6 +18,7 @@
  */
 
 #include "tree.h"
+#include <locale.h>
 
 static char *version ="$Version: $ tree v1.8.0 (c) 1996 - 2018 by Steve Baker, Thomas Moore, Francesc Rocher, Florian Sesser, Kyosuke Tokoro \n"
           "MINGW-W64 & GBK support added by Efrey Kong$";
@@ -109,7 +110,7 @@ int main(int argc, char **argv)
   /* Added by Efrey Kong
   *  For POSTIX environment
   */
-  setlocale(LC_CTYPE, "C");
+  setlocale(LC_ALL, "");
   char *strenv;
   if ((strenv = getenv("LC_ALL")) || (strenv = getenv("LC_CTYPE")) || (strenv = getenv ("LANG")))    
   {  
