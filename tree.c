@@ -110,12 +110,16 @@ int main(int argc, char **argv)
   /* Added by Efrey Kong
   *  For POSTIX environment
   */
-  setlocale(LC_ALL, "");
+  char *localecharset;
+  localecharset = setlocale(LC_CTYPE, "");
+  setlocale(LC_COLLATE, "");
   char *strenv;
   if ((strenv = getenv("LC_ALL")) || (strenv = getenv("LC_CTYPE")) || (strenv = getenv ("LANG")))    
   {  
     if (strstr(strenv, "UTF-8")) 
       charset = "UTF-8"; 
+
+    printf("getenv: charset: %s\n", charset);
   }
 
   /* Added by Efrey Kong
@@ -134,6 +138,9 @@ int main(int argc, char **argv)
     if (charset == NULL && strcmp(nl_langinfo(CODESET), "UTF-8") == 0) {
       charset = "UTF-8";
     }
+  }
+  if (strcmp( localecharset, charset) != 0 && strcmp(charset, "UTF-8") == 0) {
+      setlocale(LC_ALL, ".UTF-8");
   }
 
 /* Until I get rid of this hack, make it linux/cygwin/HP nonstop only: */
